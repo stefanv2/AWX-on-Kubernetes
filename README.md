@@ -77,6 +77,18 @@ kubectl get pods -n awx -w
 
 kubectl get secret awx-admin-password -n awx -o jsonpath="{.data.password}" | base64 -d && echo
 
+Als je het wachtwoord niet meer weet
+
+Login op de server:
+kubectl -n awx get secret | grep admin
+output:
+awx-admin-password             Opaque              1      82d
+input:
+kubectl get secret awx-admin-password -n awx -o jsonpath="{.data.password}" | base64 -d && echo
+output:u1wwe7vlt31zVOxZP2bzbdFGssNbs54i
+
+
+
 🌐 Stap 7: Toegang tot de AWX webinterface
 
 Start port-forwarding:
